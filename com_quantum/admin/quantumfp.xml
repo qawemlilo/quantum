@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: quantumfp.xml 51 2010-11-22 01:33:21Z chdemko $ -->
+<extension type="component" version="1.6.0" method="upgrade">
+ 
+        <name>Quantum FP</name>
+        <!-- The following elements are optional and free of formatting conttraints -->
+        <creationDate>23 March 2011</creationDate>
+        <author>Qawelesizwe Mlilo</author>
+        <authorEmail>qawemlilo@gmail.com</authorEmail>
+        <authorUrl>http://www.rflab.co.za</authorUrl>
+        <copyright>2011 Raging Flame</copyright>
+        <license>License Info</license>
+        <!--  The version string is recorded in the components table -->
+        <version>0.0.1</version>
+        <!-- The description is optional and defaults to the name -->
+        <description>QuantumFP Client Management System</description>
+		
+        <install> <!-- Runs on install -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                </sql>
+        </install>
+        <uninstall> <!-- Runs on uninstall -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                </sql>
+        </uninstall> 
+		
+        <update> <!-- Runs on update; New in 1.6 -->
+                <schemas>
+                        <schemapath type="mysql">sql/updates/mysql</schemapath>
+                </schemas>
+        </update>
+ 
+        <!-- Site Main File Copy Section -->
+        <!-- Note the folder attribute: This attribute describes the folder
+                to copy FROM in the package to install therefore files copied
+                in this section are copied from /site/ in the package -->
+        <files folder="site">
+                <filename>index.html</filename>
+                <filename>quantumfp.php</filename>
+                <filename>controller.php</filename>
+                <folder>views</folder>
+				<folder>files</folder>
+				<folder>models</folder>
+        </files>
+		
+        <media destination="com_quantumfp" folder="media">
+                <filename>index.html</filename>
+                <folder>client_folders</folder>
+				<folder>images</folder>
+        </media>
+		
+        <administration>
+                <!-- Administration Menu Section -->
+                <menu>Quantum FP</menu>
+                <!-- Administration Main File Copy Section -->
+                <!-- Note the folder attribute: This attribute describes the folder
+                        to copy FROM in the package to install therefore files copied
+                        in this section are copied from /admin/ in the package -->
+                <files folder="admin">
+                        <!-- Admin Main File Copy Section -->
+                        <filename>index.html</filename>
+                        <filename>quantumfp.php</filename>
+						<filename>controller.php</filename>
+                        <!-- SQL files section -->
+                        <folder>sql</folder>
+						<folder>tables</folder>
+						<folder>models</folder>
+						<folder>views</folder>
+                </files>
+        </administration>
+ 
+</extension>
